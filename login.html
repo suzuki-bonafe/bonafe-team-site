@@ -66,18 +66,20 @@ button:hover{
 <p>
 会員用パスワードを入力してください
 </p>
-
+<form autocomplete="off">
 <input
 type="password"
 id="password"
-autocomplete="off"
+name="memberpass"
+autocomplete="new-password"
 placeholder="パスワード"
 onkeypress="checkEnter(event)">
-
-<button onclick="login()">
+<button
+type="button"
+onclick="login()">
 ログイン
 </button>
-
+</form>
 <div id="message" class="message"></div>
 
 </div>
