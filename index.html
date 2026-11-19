@@ -2,10 +2,158 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bonafe Team Site</title>
+<style>
+body{
+    margin:0;
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    background:#f4f7f4;
+    line-height:1.8;
+}
+header{
+    background:#2c5e1a;
+    color:white;
+    padding:30px 15px;
+    text-align:center;
+}
+header h1{
+    margin:0;
+}
+nav{
+    background:#3d7e25;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+nav a{
+    color:white;
+    text-decoration:none;
+    padding:15px;
+    font-weight:bold;
+}
+section{
+    max-width:1000px;
+    margin:20px auto;
+    padding:25px;
+    background:white;
+    border-radius:12px;
+    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+h2{
+    color:#2c5e1a;
+    border-bottom:2px solid #2c5e1a;
+    padding-bottom:5px;
+}
+.button-area{
+    text-align:center;
+    margin-top:20px;
+}
+.btn{
+    display:inline-block;
+    background:#2c5e1a;
+    color:white;
+    text-decoration:none;
+    padding:14px 28px;
+    border-radius:8px;
+    margin:10px;
+    font-weight:bold;
+}
+.btn:hover{
+    background:#204515;
+}
+footer{
+    text-align:center;
+    padding:20px;
+    margin-top:30px;
+    background:#dfe7dd;
+}
+@media screen and (max-width:768px){
+    nav{
+        flex-direction:column;
+    }
+    nav a{
+        border-bottom:1px solid rgba(255,255,255,0.2);
+    }
+    section{
+        margin:10px;
+        padding:15px;
+    }
+    .btn{
+        display:block;
+        margin:10px auto;
+        width:80%;
+    }
+}
+</style>
 </head>
 <body>
-<h1>Bonafe Team Siteへようこそ</h1>
-<p>GitHub Pages公開テストです。</p>
+<header>
+    <h1>Bonafe Team Site</h1>
+    <p>自然観察と交流を楽しむコミュニティ</p>
+</header>
+<nav>
+    <a href="#summary">概要</a>
+    <a href="#activity">活動内容</a>
+    <a href="#entry">会員参加申し込みはこちら</a>
+    <a href="#member">会員ページへ</a>
+</nav>
+<section id="summary">
+<h2>概要</h2>
+<p>
+Bonafe Team は自然観察や野鳥観察、写真撮影を通じて、
+会員相互の交流と知識向上を目的として活動しています。
+</p>
+<p>
+初心者から経験者まで幅広く参加できる環境を目指し、
+観察会や撮影会、情報交換会を定期的に開催しています。
+</p>
+<p>
+自然を大切にしながら、楽しく学び合える仲間づくりを目標としています。
+</p>
+</section>
+<section id="activity">
+<h2>活動内容</h2>
+<ul>
+<li>野鳥観察会・探鳥会の開催</li>
+<li>野鳥撮影やカメラ設定の情報交換</li>
+<li>観察ポイントや撮影地の共有</li>
+<li>季節ごとの観察記録の紹介</li>
+<li>会員同士の交流会</li>
+<li>自然保護に関する学習活動</li>
+</ul>
+<p>
+活動報告や写真は今後このサイトで紹介していきます。
+</p>
+</section>
+<section id="entry">
+<h2>会員参加申し込みはこちら</h2>
+<p>
+Bonafe Team の活動に興味をお持ちの方は、
+以下の申し込みフォームよりご連絡ください。
+</p>
+<div class="button-area">
+<a class="btn"
+href="https://forms.gle/xxxxxxxxxxxx"
+target="_blank">
+会員参加申し込みフォーム
+</a>
+</div>
+</section>
+<section id="member">
+<h2>会員ページへ</h2>
+<p>
+会員向けのお知らせ、活動予定、資料等を掲載します。
+</p>
+<div class="button-area">
+<a class="btn"
+href="member.html">
+会員ページへ
+</a>
+</div>
+</section>
+<footer>
+© 2026 Bonafe Team Site
+</footer>
 </body>
 </html>
