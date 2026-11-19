@@ -69,16 +69,27 @@ class="message">
 </div>
 <script>
 function login(){
-const pass =
-document.getElementById("password").value;
-if(pass === "bonafe2026"){
-    window.location.href =
-    "member.html";
-}else{
-    document.getElementById("message")
-    .innerText =
-    "パスワードが違います";
-}
+    const passwordBox =
+    document.getElementById("password");
+    const pass =
+    passwordBox.value;
+    if(pass === "bonafe2026"){
+        // 入力欄をクリア
+        passwordBox.value = "";
+        // メッセージもクリア
+        document.getElementById("message")
+        .innerText = "";
+        // 会員ページへ移動
+        window.location.href =
+        "member.html";
+    }else{
+        document.getElementById("message")
+        .innerText =
+        "パスワードが違います";
+        // 間違えた場合も消す
+        passwordBox.value = "";
+        passwordBox.focus();
+    }
 }
 </script>
 </body>
