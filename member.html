@@ -221,11 +221,21 @@ function logout(){
 
     if(confirm("ログアウトしますか？")){
 
-        window.location.replace("login.html");
+        sessionStorage.clear();
+
+        location.replace("login.html");
 
     }
 
 }
+
+window.history.pushState(null, "", window.location.href);
+
+window.addEventListener("popstate", function () {
+
+    window.history.pushState(null, "", window.location.href);
+
+});
 
 </script>
 
