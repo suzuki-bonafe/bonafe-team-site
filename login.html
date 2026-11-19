@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bonafe Team 会員ログイン</title>
+
+<title>Bonafe Team 会員入口</title>
 
 <style>
+
 body{
     margin:0;
     height:100vh;
@@ -17,33 +21,42 @@ body{
 }
 
 .login-box{
+
     width:320px;
     background:white;
     padding:30px;
     border-radius:12px;
     box-shadow:0 0 15px rgba(0,0,0,0.15);
     text-align:center;
+
 }
 
 h1{
     color:#2c5e1a;
+    margin-bottom:20px;
 }
 
 input{
+
     width:90%;
-    padding:10px;
-    margin:10px 0;
+    padding:12px;
     font-size:16px;
+    margin-bottom:15px;
+    border:1px solid #999;
+    border-radius:5px;
+
 }
 
 button{
+
     width:100%;
     padding:12px;
-    border:none;
-    border-radius:6px;
     background:#2c5e1a;
     color:white;
+    border:none;
+    border-radius:5px;
     cursor:pointer;
+
 }
 
 button:hover{
@@ -51,18 +64,29 @@ button:hover{
 }
 
 .message{
+
     color:red;
     margin-top:10px;
+    min-height:20px;
+
 }
 
-.back-btn{
+.back-link{
+
     display:inline-block;
-    margin-top:15px;
+    margin-top:20px;
     color:#2c5e1a;
     text-decoration:none;
     font-weight:bold;
+
 }
+
+.back-link:hover{
+    text-decoration:underline;
+}
+
 </style>
+
 </head>
 
 <body onload="initLogin()">
@@ -74,7 +98,9 @@ button:hover{
 <p>
 会員用合言葉を入力してください
 </p>
+
 <form autocomplete="off">
+
 <input
 type="text"
 id="password"
@@ -83,18 +109,29 @@ autocomplete="off"
 spellcheck="false"
 placeholder="合言葉"
 onkeypress="checkEnter(event)">
+
 <button
 type="button"
 onclick="login()">
-入室
-</button>
-</form>
-<br><br>
 
-<a href="index.html" class="back-btn">
-トップページへ戻る
+入室
+
+</button>
+
+</form>
+
+<div
+id="message"
+class="message">
+</div>
+
+<a
+href="index.html"
+class="back-link">
+
+← トップページへ戻る
+
 </a>
-<div id="message" class="message"></div>
 
 </div>
 
@@ -102,22 +139,41 @@ onclick="login()">
 
 function initLogin(){
 
-    document.getElementById("password").value = "";
-    document.getElementById("password").focus();
+    const box =
+    document.getElementById("password");
+
+    box.value = "";
+
+    setTimeout(function(){
+
+        box.value = "";
+        box.focus();
+
+    },100);
 
 }
 
 function checkEnter(event){
 
     if(event.key === "Enter"){
+
+        event.preventDefault();
         login();
+
     }
 
 }
+
 function login(){
 
     const pass =
     document.getElementById("password").value;
+
+    /*
+      ↓↓↓
+      お好きな合言葉に変更
+      ↓↓↓
+    */
 
     if(pass === "bonafe2026"){
 
@@ -137,6 +193,10 @@ function login(){
         .innerText =
         "合言葉が違います";
 
+        document.getElementById("password").value = "";
+
+        document.getElementById("password").focus();
+
     }
 
 }
@@ -144,4 +204,5 @@ function login(){
 </script>
 
 </body>
+
 </html>
