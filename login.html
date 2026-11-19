@@ -101,30 +101,28 @@ function checkEnter(event){
     }
 
 }
-
 function login(){
 
-    const passwordBox =
-    document.getElementById("password");
-
     const pass =
-    passwordBox.value;
+    document.getElementById("password").value;
 
     if(pass === "bonafe2026"){
 
-        passwordBox.value = "";
+        sessionStorage.setItem(
+            "memberLogin",
+            "ok"
+        );
 
-        window.location.href =
+        document.getElementById("password").value = "";
+
+        location.href =
         "member.html";
 
     }else{
 
         document.getElementById("message")
         .innerText =
-        "パスワードが違います";
-
-        passwordBox.value = "";
-        passwordBox.focus();
+        "合言葉が違います";
 
     }
 
