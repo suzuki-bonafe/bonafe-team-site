@@ -238,7 +238,16 @@ window.addEventListener("popstate", function () {
 });
 
 </script>
+<script>
 
+if(
+  sessionStorage.getItem("memberLogin")
+  !== "ok"
+){
+    location.replace("login.html");
+}
+
+</script>
 </body>
 
 </html>
