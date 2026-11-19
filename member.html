@@ -48,20 +48,32 @@ nav a{
     font-weight:bold;
 }
 
-.logout-area{
-    text-align:right;
+.button-area{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
     margin:15px;
 }
 
-.logout-btn{
+.btn{
 
-    background:#b22222;
+    background:#2c5e1a;
     color:white;
     border:none;
     padding:10px 20px;
     border-radius:5px;
     cursor:pointer;
+    text-decoration:none;
+    font-size:14px;
 
+}
+
+.btn:hover{
+    background:#214715;
+}
+
+.logout-btn{
+    background:#b22222;
 }
 
 .logout-btn:hover{
@@ -104,6 +116,10 @@ footer{
 
 @media screen and (max-width:768px){
 
+    .button-area{
+        flex-direction:column;
+    }
+
     nav a{
         display:block;
         margin:8px;
@@ -117,6 +133,26 @@ footer{
 
 </style>
 
+<script>
+
+if(sessionStorage.getItem("memberLogin") !== "ok"){
+
+    location.replace("login.html");
+
+}
+
+window.addEventListener("pageshow", function(){
+
+    if(sessionStorage.getItem("memberLogin") !== "ok"){
+
+        location.replace("login.html");
+
+    }
+
+});
+
+</script>
+
 </head>
 
 <body>
@@ -125,7 +161,9 @@ footer{
 
 <h1>Bonafe Team 会員ページ</h1>
 
-<p>会員向け情報の掲載ページです</p>
+<p>
+会員向け情報の掲載ページです
+</p>
 
 </header>
 
@@ -137,13 +175,21 @@ footer{
 
 </nav>
 
-<div class="logout-area">
+<div class="button-area">
+
+<a
+href="index.html"
+class="btn">
+
+トップページへ戻る
+
+</a>
 
 <button
-class="logout-btn"
+class="btn logout-btn"
 onclick="logout()">
 
-ログアウト
+会員ページを退出
 
 </button>
 
@@ -171,7 +217,8 @@ scrolling="no">
 <h2>お知らせ</h2>
 
 <div class="notice">
-【お知らせ】冬鳥シーズンが始まりました。観察マナーを守って活動しましょう。
+【お知らせ】冬鳥シーズンが始まりました。
+観察マナーを守って活動しましょう。
 </div>
 
 <div class="notice">
@@ -184,7 +231,9 @@ scrolling="no">
 
 <h2>写真共有</h2>
 
-<p>会員の撮影写真を掲載予定です。</p>
+<p>
+会員の撮影写真を掲載予定です。
+</p>
 
 <ul>
 <li>カワセミ</li>
@@ -193,6 +242,10 @@ scrolling="no">
 <li>オオタカ</li>
 </ul>
 
+<p>
+今後サムネイル付き写真ギャラリーを追加予定です。
+</p>
+
 </section>
 
 <section>
@@ -200,10 +253,30 @@ scrolling="no">
 <h2>ダウンロード資料</h2>
 
 <ul>
-<li><a href="#">探鳥会参加のしおり</a></li>
-<li><a href="#">観察記録シート</a></li>
-<li><a href="#">活動規約</a></li>
+
+<li>
+<a href="#">
+探鳥会参加のしおり
+</a>
+</li>
+
+<li>
+<a href="#">
+観察記録シート
+</a>
+</li>
+
+<li>
+<a href="#">
+活動規約
+</a>
+</li>
+
 </ul>
+
+<p>
+資料を配置したらリンク先を書き換えてください。
+</p>
 
 </section>
 
@@ -219,35 +292,21 @@ scrolling="no">
 
 function logout(){
 
-    if(confirm("ログアウトしますか？")){
+    if(confirm("会員ページを退出しますか？")){
 
-        sessionStorage.clear();
-        location.replace("index.html");
-rem        location.replace("login.html");
+        sessionStorage.removeItem(
+            "memberLogin"
+        );
+
+        location.href =
+        "index.html";
 
     }
 
 }
 
-window.history.pushState(null, "", window.location.href);
-
-window.addEventListener("popstate", function () {
-
-    window.history.pushState(null, "", window.location.href);
-
-});
-
 </script>
-<script>
 
-if(
-  sessionStorage.getItem("memberLogin")
-  !== "ok"
-){
-    location.replace("login.html");
-}
-
-</script>
 </body>
 
 </html>
