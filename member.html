@@ -34,6 +34,11 @@ nav a{
     margin:10px;
     font-weight:bold;
 }
+<div style="text-align:right; margin:10px;">
+    <button onclick="logout()">
+        ログアウト
+    </button>
+</div>
 main{
     max-width:1000px;
     margin:auto;
@@ -133,5 +138,9 @@ scrolling="no">
 <footer>
 © Bonafe Team
 </footer>
+function logout(){
+    alert("ログアウトしました");
+    window.location.href = "login.html";
+}
 </body>
 </html>
