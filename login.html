@@ -1,1 +1,85 @@
-
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+<title>会員ログイン</title>
+<style>
+body{
+    background:#f4f7f4;
+    font-family:"Yu Gothic",sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+}
+.login-box{
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 0 10px rgba(0,0,0,0.15);
+    width:320px;
+    text-align:center;
+}
+h1{
+    color:#2c5e1a;
+}
+input{
+    width:90%;
+    padding:10px;
+    margin:10px 0;
+}
+button{
+    background:#2c5e1a;
+    color:white;
+    border:none;
+    padding:12px;
+    width:100%;
+    border-radius:5px;
+    cursor:pointer;
+}
+button:hover{
+    background:#214715;
+}
+.message{
+    color:red;
+    margin-top:10px;
+}
+</style>
+</head>
+<body>
+<div class="login-box">
+<h1>会員専用ページ</h1>
+<p>
+会員用パスワードを入力してください
+</p>
+<input
+type="password"
+id="password"
+placeholder="パスワード">
+<button onclick="login()">
+ログイン
+</button>
+<div
+id="message"
+class="message">
+</div>
+</div>
+<script>
+function login(){
+const pass =
+document.getElementById("password").value;
+if(pass === "bonafe2026"){
+    window.location.href =
+    "member.html";
+}else{
+    document.getElementById("message")
+    .innerText =
+    "パスワードが違います";
+}
+}
+</script>
+</body>
+</html>
