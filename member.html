@@ -1,53 +1,40 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
-
 <meta http-equiv="Cache-Control"
 content="no-cache, no-store, must-revalidate">
-
 <meta http-equiv="Pragma"
 content="no-cache">
-
 <meta http-equiv="Expires"
 content="0">
-
 <title>会員ページ | Bonafe Team</title>
-
 <style>
-
 body{
     margin:0;
     font-family:"Yu Gothic","Meiryo",sans-serif;
     background:#f4f7f4;
     line-height:1.8;
 }
-
 header{
     background:#2c5e1a;
     color:white;
     text-align:center;
     padding:25px;
 }
-
 nav{
     background:#3d7e25;
     text-align:center;
     padding:12px;
 }
-
 nav a{
     color:white;
     text-decoration:none;
     margin:10px;
     font-weight:bold;
 }
-
 .button-area{
     display:flex;
     justify-content:flex-end;
@@ -55,15 +42,6 @@ nav a{
     margin:15px;
 }
 .btn{
-'    background:#2c5e1a;
-'    color:white;
-'    border:none;
-'    padding:10px 20px;
-'    border-radius:5px;
-'    cursor:pointer;
-'    text-decoration:none;
-'    font-size:14px;
-
     display:inline-block;
     width:100%;
     max-width:400px;
@@ -71,25 +49,20 @@ nav a{
     padding:15px;
     text-align:center;
 }
-
 .btn:hover{
     background:#214715;
 }
-
 .logout-btn{
     background:#b22222;
 }
-
 .logout-btn:hover{
     background:#8b1a1a;
 }
-
 main{
     max-width:1000px;
     margin:auto;
     padding:15px;
 }
-
 section{
     background:white;
     margin:20px 0;
@@ -97,106 +70,69 @@ section{
     border-radius:10px;
     box-shadow:0 2px 5px rgba(0,0,0,0.1);
 }
-
 h2{
     color:#2c5e1a;
     border-bottom:2px solid #2c5e1a;
     padding-bottom:5px;
 }
-
 .notice{
     background:#fff9d6;
     padding:10px;
     border-left:5px solid orange;
     margin:10px 0;
 }
-
 footer{
     background:#dfe7dd;
     text-align:center;
     padding:20px;
     margin-top:30px;
 }
-
 @media screen and (max-width:768px){
-
     .button-area{
         flex-direction:column;
     }
-
     nav a{
         display:block;
         margin:8px;
     }
-
     section{
         padding:15px;
     }
-
 }
-
 </style>
-
 <script>
-
 if(sessionStorage.getItem("memberLogin") !== "ok"){
-
     location.replace("login.html");
-
 }
-
 window.addEventListener("pageshow", function(){
-
     if(sessionStorage.getItem("memberLogin") !== "ok"){
-
         location.replace("login.html");
-
     }
-
 });
-
 </script>
-
 </head>
-
 <body>
-
 <header>
-
 <h1>Bonafe Team 会員ページ</h1>
-
 <p>
 会員向け情報の掲載ページです
 </p>
-
 </header>
-
 <nav>
-
 <a href="index.html">
 トップページへ戻る
 </a>
-
 </nav>
-
 <div class="button-area">
-
 <button
 class="btn logout-btn"
 onclick="logout()">
-
 会員ページを退出
-
 </button>
-
 </div>
-
 <main>
-
 <section>
-
 <h2>今月の活動予定</h2>
-
 <iframe
 src="https://calendar.google.com/calendar/embed?src=e690c34ccabe8af2ad08ec5f85ced467ba5a94e9373d78fdabb6357ce80b8436@group.calendar.google.com"
 style="border:0"
@@ -207,7 +143,6 @@ frameborder="0"
 scrolling="no">
 </iframe>
 </section>
-
 <section>
 <h2>お知らせ</h2>
 <div class="notice">
@@ -237,7 +172,6 @@ scrolling="no">
 </ul>
 </p>
 </section>
-    
 <section>
 <h2>＜内観とは＞</h2>
 <p>
@@ -276,7 +210,6 @@ rel="noopener noreferrer">
 スマートフォンの場合はGoogleスプレッドシートアプリで開くと見やすくなります。
 </p>
 </section>
-
 <section>
 <h2>ダウンロード資料</h2>
 <ul>
@@ -285,54 +218,32 @@ rel="noopener noreferrer">
 『内観のすすめ』石井光著
 </a>
 </li>
-
 <li>
 <a href="https://docs.google.com/spreadsheets/d/1UV0IXAApW5YF_JonY8NUi48L79ei38Wf/edit?usp=sharing">
 内観の記録シート
 </a>
 </li>
-
 <li>
 <a href="https://drive.google.com/file/d/1lxL4JUX26t3ZdZRIDQkxchmOO5IZamwS/view?usp=sharing">
 リーフレット（ボナフェの会のしおり)
 </a>
 </li>
-
 </ul>
-
-<p>
-資料を配置したらリンク先を書き換えてください。
-</p>
-
 </section>
-
 </main>
-
 <footer>
-
 © Bonafe Team
-
 </footer>
-
 <script>
-
 function logout(){
-
     if(confirm("会員ページを退出しますか？")){
-
         sessionStorage.removeItem(
             "memberLogin"
         );
-
         location.href =
         "index.html";
-
     }
-
 }
-
 </script>
-
 </body>
-
 </html>
