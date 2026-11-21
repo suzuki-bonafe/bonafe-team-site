@@ -62,11 +62,26 @@ h2{
 .btn:hover{
     background:#204515;
 }
+.image-row{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:30px;
+
+    flex-wrap:wrap;
+
+}
+
 .hero-image{
-    width:200px;
+
+    width:120px;
+
     height:auto;
+
     border-radius:10px;
-    margin-top:15px;
+
 }
 footer{
     text-align:center;
@@ -97,14 +112,17 @@ footer{
 <header>
     <h1>Bonafe Team Site（ボナフェの会）</h1>
     <p>ギャンブル依存症本人と家族のための自助グループ</p>
+<div class="image-row">
     <img
-      src="images/bonafe.jpg"
-      alt="Bonafe Team トップ画像"
-      class="hero-image">
+    src="images/bonafe.jpg"
+    alt="Bonafe Team"
+    class="hero-image">
+
     <img
-      src="images/family.jpg"
-      alt="Bonafe Team トップ画像2"
-      class="hero-image">
+    src="images/family.jpg"
+    alt="幸せな家族"
+    class="hero-image">
+</div>
 </header>
 <nav>
     <a href="#summary">概要</a>
