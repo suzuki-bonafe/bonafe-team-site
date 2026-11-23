@@ -59,7 +59,7 @@
       msg.textContent = "ログイン中...";
       try {
         await signInWithEmailAndPassword(auth, form.email.value, form.password.value);
-        window.location.href = "./index.html";
+        window.location.href = "./member.html";
       } catch (err) {
         msg.textContent = "メールアドレスまたはパスワードが正しくありません。";
       }
