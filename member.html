@@ -104,16 +104,6 @@ footer{
     }
 }
 </style>
-<script>
-if(sessionStorage.getItem("memberLogin") !== "ok"){
-    location.replace("login.html");
-}
-window.addEventListener("pageshow", function(){
-    if(sessionStorage.getItem("memberLogin") !== "ok"){
-        location.replace("login.html");
-    }
-});
-</script>
 </head>
 <body>
 <header>
