@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>会員ログイン | bonafe</title>
+  <style>
+    body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; background: #f5f6f8; }
+    .card { background: #fff; padding: 32px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); width: 100%; max-width: 360px; }
+    h1 { font-size: 1.3rem; margin-top: 0; text-align: center; }
+    input { width: 100%; padding: 10px 12px; margin: 8px 0 16px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; }
+    button { width: 100%; padding: 12px; background: #1a73e8; color: #fff; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; }
+    button:hover { background: #1557b0; }
+    #message { color: #d93025; font-size: 0.9rem; margin-top: 12px; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>会員ログイン</h1>
+    <form id="login-form">
+      <label>メールアドレス</label>
+      <input type="email" id="email" placeholder="example@gmail.com" required />
+      <label>パスワード</label>
+      <input type="password" id="password" placeholder="パスワード" required />
+      <button type="submit">ログイン</button>
+    </form>
+    <p id="message"></p>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBPyy3Kdw9z_DeMylbNx2txlj0sj5jzlI4",
+      authDomain: "bonafe-project.firebaseapp.com",
+      projectId: "bonafe-project",
+      storageBucket: "bonafe-project.firebasestorage.app",
+      messagingSenderId: "537942373363",
+      appId: "1:537942373363:web:a6d0a99ab3f3078caf5886",
+      measurementId: "G-KJZK2JVPL3"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // すでにログイン済みならトップページへ移動
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        window.location.href = "./index.html";
+      }
+    });
+
+    const form = document.getElementById("login-form");
+    const msg = document.getElementById("message");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      msg.textContent = "ログイン中...";
+      try {
+        await signInWithEmailAndPassword(auth, form.email.value, form.password.value);
+        window.location.href = "./index.html";
+      } catch (err) {
+        msg.textContent = "メールアドレスまたはパスワードが正しくありません。";
+      }
+    });
+  </script>
+</body>
+</html>
