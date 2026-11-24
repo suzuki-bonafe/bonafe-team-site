@@ -8,30 +8,28 @@
     body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; background: #f5f6f8; }
     .card { background: #fff; padding: 32px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); width: 100%; max-width: 360px; }
     h1 { font-size: 1.3rem; margin-top: 0; text-align: center; }
-    label { display: block; font-size: 0.9rem; }
     input { width: 100%; padding: 10px 12px; margin: 8px 0 16px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; }
     button { width: 100%; padding: 12px; background: #1a73e8; color: #fff; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; }
-    button:hover:not(:disabled) { background: #1557b0; }
-    button:disabled { opacity: 0.6; cursor: not-allowed; }
+    button:hover { background: #1557b0; }
     #message { color: #d93025; font-size: 0.9rem; margin-top: 12px; text-align: center; }
   </style>
 </head>
 <body>
   <div class="card">
     <h1>会員ログイン</h1>
-    <form id="login-form">
+    <form id="login-form" autocomplete="off">
       <label for="email">メールアドレス</label>
-      <input type="email" id="email" autocomplete="email" placeholder="example@gmail.com" required />
+      <input type="email" id="email" autocomplete="username" placeholder="example@gmail.com" required />
       <label for="password">パスワード</label>
       <input type="password" id="password" autocomplete="current-password" placeholder="パスワード" required />
-      <button type="submit" id="submit-btn">ログイン</button>
+      <button type="submit">ログイン</button>
     </form>
     <p id="message"></p>
   </div>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getAuth, signOut, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyBPyy3Kdw9z_DeMylbNx2txlj0sj5jzlI4",
@@ -46,33 +44,21 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    let isSubmitting = false;
-
-    // すでにログイン済みなら会員ページへ移動
-    onAuthStateChanged(auth, (user) => {
-      if (user && !isSubmitting) {
-        window.location.href = "./member.html";
-      }
-    });
+    // login2.html を開いた時点で残っているセッションをクリア
+    signOut(auth).catch(() => {});
 
     const form = document.getElementById("login-form");
-    const submitBtn = document.getElementById("submit-btn");
     const msg = document.getElementById("message");
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      if (isSubmitting) return;
-
-      isSubmitting = true;
-      submitBtn.disabled = true;
       msg.textContent = "ログイン中...";
-
       try {
+        await signOut(auth).catch(() => {});
         await signInWithEmailAndPassword(auth, form.email.value, form.password.value);
-        window.location.href = "./member.html";
+        form.reset();
+        window.location.href = "./member.html"; // 実際の会員ページ名に合わせて変更してください
       } catch (err) {
-        isSubmitting = false;
-        submitBtn.disabled = false;
         msg.textContent = "メールアドレスまたはパスワードが正しくありません。";
       }
     });
